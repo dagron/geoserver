@@ -17,10 +17,10 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 =========================================================================*/
-/** Dao for geoserver thing */
-class Geoserver_ThingDao extends Geoserver_AppDao
-  {
-  public $_model = 'Thing';
-  public $_module = 'geoserver';
-  }
+require_once BASE_PATH.'/modules/geoserver/models/base/LayerModelBase.php';
+
+/** Layer model pdo implementation */
+class Geoserver_LayerModel extends Geoserver_LayerModelBase
+{
+}
 ?>

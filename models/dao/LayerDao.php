@@ -17,20 +17,10 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 =========================================================================*/
-abstract class Geoserver_ThingModelBase extends Geoserver_AppModel
-{
-  /** constructor */
-  public function __construct()
-    {
-    parent::__construct();
-    $this->_name = 'geoserver_thing';
-    $this->_key = 'thing_id';
-
-    $this->_mainData = array(
-      'thing_id' => array('type' => MIDAS_DATA),
-      'creation_date' => array('type' => MIDAS_DATA)
-      );
-    $this->initialize();
-    }
-}
+/** Dao for geoserver layer */
+class Geoserver_LayerDao extends Geoserver_AppDao
+  {
+  public $_model = 'Layer';
+  public $_module = 'geoserver';
+  }
 ?>

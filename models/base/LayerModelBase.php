@@ -17,10 +17,26 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 =========================================================================*/
-require_once BASE_PATH.'/modules/geoserver/models/base/ThingModelBase.php';
-
-/** Thing model pdo implementation */
-class Geoserver_ThingModel extends Geoserver_ThingModelBase
+abstract class Geoserver_LayerModelBase extends Geoserver_AppModel
 {
+  /** constructor */
+  public function __construct()
+    {
+    parent::__construct();
+    $this->_name = 'geoserver_layer';
+    $this->_key = 'layer_id';
+
+    $this->_mainData = array(
+      'layer_id' => array('type' => MIDAS_DATA),
+      'geoserver_id' => array('type' => MIDAS_DATA),
+      'item_id' => array('type' => MIDAS_DATA),
+      'name' => array('type' => MIDAS_DATA),
+      'item' => array('type' => MIDAS_MANY_TO_ONE, 'model' => 'Item',
+                           'parent_column' => 'item_id', 'child_column' => 'item_id'),
+      'geoserver' => array('type' => MIDAS_MANY_TO_ONE, 'model' => 'Geoserver', 'module' => $this->moduleName,
+                           'parent_column' => 'geoserver_id', 'child_column' => 'geoserver_id')
+      );
+    $this->initialize();
+    }
 }
 ?>
